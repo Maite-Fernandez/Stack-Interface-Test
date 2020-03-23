@@ -1,7 +1,7 @@
 import org.junit.*;
 
 public class StackTest {
-    //WHAT IS GOING ON?
+
     StackInterface<Integer> s;
 
     @Before
@@ -21,13 +21,10 @@ public class StackTest {
         s.push(5);
 
         Assert.assertEquals("push", 5, s.size());
-        // Assert statements
-        //System.out.print("The function knows it is not possible:"+ assertEquals(-1,s.push(6)));
-        //System.out.print("The stack maintains the full state size:"+assertEquals(5, s.size()));
     }
 
-    @Test(expected=PilaLlenaException.class)
-    public void testPushStackFull() throws Exception {
+    @Test(expected=FullStackException.class)
+    public void testPushFullStack() throws Exception {
         //Try to push elements over the size of the stack
         s.push(4);
         s.push(5);
@@ -38,21 +35,14 @@ public class StackTest {
 
 
     @Test
-    public void TestPop() throws Exception{
+    public void testPop() throws Exception{
         //Try to pop elements under the empty state
         Assert.assertEquals("testPop", 3, s.size());
-
-         int i=s.pop();
-         Assert.assertEquals("testPop",3, i);
-         Assert.assertEquals("testPop", 2, s.size());
-
-         s.pop();
-
-
-         s.pop();
-         // Assert statements
-//         System.out.print("The function knows it is not possible:"+assertEquals(-1,s.pop));
-//         System.out.print("The stack maintains the empty state size :"+assertEquals(0,s.size()));
+        int i=s.pop();
+        Assert.assertEquals("testPop",3, i);
+        Assert.assertEquals("testPop", 2, s.size());
+        s.pop();
+        s.pop();
 
      }
 }

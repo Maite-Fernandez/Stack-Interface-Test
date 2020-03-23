@@ -15,7 +15,7 @@ public class Stack<E> implements StackInterface<E> {
     }
     @Override
     //Push method
-    public void push(E e) throws PilaLlenaException {
+    public void push(E e) throws FullStackException {
         //When the stack is not full we add the element
         if(stack.size()<max_size){
             stack.add(e);
@@ -24,15 +24,15 @@ public class Stack<E> implements StackInterface<E> {
         }
         else{
             //Return -1 when the stack is full
-           throw new PilaLlenaException();
+           throw new FullStackException();
         }
     }
     @Override
     //Pop method
-    public E pop() throws PilaVaciaException{
+    public E pop() throws EmptyStackException{
         //Return -1 when the stack is empty
         if(stack.size()==0){
-            throw new PilaVaciaException(); //return -1;
+            throw new EmptyStackException(); //return -1;
         }
         else{
             //When the stack is not empty we remove the last element
